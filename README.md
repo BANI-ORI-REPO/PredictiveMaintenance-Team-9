@@ -4,6 +4,9 @@ NASA Turbofan Engine Fault Dataset @ AWS# Predictive Maintenance using Machine L
 S3 : data location :
 https://sagemaker-us-east-1-023375022819.s3.amazonaws.com/PredictiveMaintenance-Team-9/input/CMAPSSData.zip
 
+colaboration spot in sage maker: 
+https://bhavanashah-aws-ml.notebook.us-east-1.sagemaker.aws/tree/PredictiveMaintenance
+
 ### Introduction
 
 Imagine you are the manager at a manufacturing company responsible for monitoring assembly lines. Each assembly line contains multiple kinds of machines that must work continuously and reliably to produce ready-to-ship products as can be seen in the image below. IoT sensors placed on these machines monitor electricity consumption, noise generated, vibration, temperature and various other measurable quantities that are used to monitor the health of each machine. Sudden breakdown of any of these machines across multiple assembly lines will lead to:
