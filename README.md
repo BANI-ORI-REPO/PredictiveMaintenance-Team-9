@@ -4,6 +4,14 @@ NASA Turbofan Engine Fault Dataset @ AWS# Predictive Maintenance using Machine L
 S3 : data location :
 https://sagemaker-us-east-1-023375022819.s3.amazonaws.com/PredictiveMaintenance-Team-9/input/CMAPSSData.zip
 
+About the data: 
+Turbofan Engine Degradation Simulation Data Set
+Publications using this data set
+Description	Engine degradation simulation was carried out using C-MAPSS. Four different were sets simulated under different combinations of operational conditions and fault modes. Records several sensor channels to characterize fault evolution. The data set was provided by the Prognostics CoE at NASA Ames.
+Format	The set is in text format and has been zipped including a readme file.
+Datasets	+ Download Turbofan Engine Degradation Simulation Data Set (39327 downloads)
+Dataset Citation	A. Saxena and K. Goebel (2008). "Turbofan Engine Degradation Simulation Data Set", NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/project/prognostic-data-repository), NASA Ames Research Center, Moffett Field, CA
+
 colaboration spot in sage maker: 
 https://bhavanashah-aws-ml.notebook.us-east-1.sagemaker.aws/tree/PredictiveMaintenance
 
