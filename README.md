@@ -15,6 +15,11 @@ Dataset Citation	A. Saxena and K. Goebel (2008). "Turbofan Engine Degradation Si
 colaboration spot in sage maker: 
 https://bhavanashah-aws-ml.notebook.us-east-1.sagemaker.aws/tree/PredictiveMaintenance
 
+More about the xGboosst model used :
+https://aws.amazon.com/blogs/machine-learning/simplify-machine-learning-with-xgboost-and-amazon-sagemaker/ 
+ 
+
+
 ### Introduction
 
 Imagine you are the manager at a manufacturing company responsible for monitoring assembly lines. Each assembly line contains multiple kinds of machines that must work continuously and reliably to produce ready-to-ship products as can be seen in the image below. IoT sensors placed on these machines monitor electricity consumption, noise generated, vibration, temperature and various other measurable quantities that are used to monitor the health of each machine. Sudden breakdown of any of these machines across multiple assembly lines will lead to:
