@@ -3,11 +3,11 @@ NASA Turbofan Engine Fault Dataset @ AWS# Predictive Maintenance using Machine L
 3 Day AWS workshop and 2 day ML project class work.
 
 # Sysco Team Memebers :
-Bhavana Shah
-Vivek Dosapati
-Ravi Gummadi
-Madelaine Davis 
-John cavers 
+# Bhavana Shah
+# Vivek Dosapati
+# Ravi Gummadi
+# Madelaine Davis 
+# John cavers 
 
 
 S3 : data location :
