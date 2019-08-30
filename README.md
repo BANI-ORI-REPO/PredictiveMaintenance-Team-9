@@ -1,10 +1,32 @@
 # PredictiveMaintenance-Team-9
 NASA Turbofan Engine Fault Dataset @ AWS# Predictive Maintenance using Machine Learning on Sagemaker
+3 Day AWS workshop and 2 day ML project class work.
+
+# Sysco Team Memebers :
+Bhavana Shah
+Vivek Dosapati
+Ravi Gummadi
+Madelaine Davis 
+John cavers 
+
 
 S3 : data location :
 https://sagemaker-us-east-1-023375022819.s3.amazonaws.com/PredictiveMaintenance-Team-9/input/CMAPSSData.zip
 
-About the data: 
+### Introduction
+
+Imagine you are the manager at a manufacturing company responsible for monitoring assembly lines. Each assembly line contains multiple kinds of machines that must work continuously and reliably to produce ready-to-ship products as can be seen in the image below. IoT sensors placed on these machines monitor electricity consumption, noise generated, vibration, temperature and various other measurable quantities that are used to monitor the health of each machine. Sudden breakdown of any of these machines across multiple assembly lines will lead to:
+
+1. Unscheduled downtime and resulting delays in delivering your product to market
+2. Cost incurred due to delays, and hiring maintenance workers to repair and possibly replace parts of the machine that caused the breakdown
+
+You have been tasked with researching a technique called “*predictive maintenance*”, especially after your competitors Advantech, Inc. have published a report (http://www.advantech.com/industrial-automation/industry4.0/pms#my_cen). Additionally, you are intrigued to see if Machine Learning can help with this problem. Your team's collective research notes regarding a potential proof-of-concept that you will be building is included here:
+
+# Project Goal
+Create ML model that can predict Remaining Useful Life (RUL) on an engine after each run cycle to improve the Predictive Maintenance process. With a predictive model, the Maintenance Department can use the information to determine when to perform preventative maintenance on an engine.  This timing improvement will minimize engine down time resulting in increased production output and lower costs. 
+
+
+# About the data: 
 Turbofan Engine Degradation Simulation Data Set
 Publications using this data set
 Description	Engine degradation simulation was carried out using C-MAPSS. Four different were sets simulated under different combinations of operational conditions and fault modes. Records several sensor channels to characterize fault evolution. The data set was provided by the Prognostics CoE at NASA Ames.
@@ -24,24 +46,28 @@ First we trained model with static hyperparameters
 Then reconfigured for Hyperparameter tuning
 
 
-Results for Static Model: train-validation-rmse: 45.7
-Parameters:
-"max_depth":"5","eta":"0.2","gamma":"4","min_child_weight":"6","subsample":"0.7","silent":"0","objective":"reg:linear","num_round":"50”
-Results for Best Model, out of 20 models built: validation-rmse: 33.062
-Parameters:
-eta': ContinuousParameter(0.3, 0.7),'min_child_weight': ContinuousParameter(5, 10),'alpha': ContinuousParameter(0, 2),'max_depth': IntegerParameter(4, 8)
+# Results for Static Model: train-validation-rmse: 45.7
 
- 
+# Parameters:
+"max_depth":"5",
+"eta":"0.2",
+"gamma":"4",
+"min_child_weight":"6",
+"subsample":"0.7",
+"silent":"0",
+"objective":"reg:linear",
+"num_round":"50”
+
+# Results for Best Model, out of 20 models built: validation-rmse: 33.062
 
 
-### Introduction
+# Parameters:
+'eta': ContinuousParameter(0.3, 0.7),
+'min_child_weight': ContinuousParameter(5, 10),
+'alpha': ContinuousParameter(0, 2),
+'max_depth': IntegerParameter(4, 8)
 
-Imagine you are the manager at a manufacturing company responsible for monitoring assembly lines. Each assembly line contains multiple kinds of machines that must work continuously and reliably to produce ready-to-ship products as can be seen in the image below. IoT sensors placed on these machines monitor electricity consumption, noise generated, vibration, temperature and various other measurable quantities that are used to monitor the health of each machine. Sudden breakdown of any of these machines across multiple assembly lines will lead to:
-
-1. Unscheduled downtime and resulting delays in delivering your product to market
-2. Cost incurred due to delays, and hiring maintenance workers to repair and possibly replace parts of the machine that caused the breakdown
-
-You have been tasked with researching a technique called “*predictive maintenance*”, especially after your competitors Advantech, Inc. have published a report (http://www.advantech.com/industrial-automation/industry4.0/pms#my_cen). Additionally, you are intrigued to see if Machine Learning can help with this problem. Your team's collective research notes regarding a potential proof-of-concept that you will be building is included here:  
+   
 
 ## Reactive, Predictive or Preventive Maintenance
 
@@ -79,6 +105,25 @@ The data are provided as a zip-compressed text file with 26 columns of numbers, 
 ...
 26) sensor measurement 26
 
+# ETL/ Data Transformation
+
+Source:  https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan
+
+Downloaded locally into the SageMaker Instance and to the S3 bucket 
+s3://sagemaker-us-east-1-023375022819/PredictiveMaintenance-Team-9/input/CMAPSSData
+
+Data Wrangling in Jupyter Notebook
+1. For each type of dataset in train and test: FD001, FD002, FD003, FD004
+Create a new variables for 
+Conditions: 1 - ONE (Sea Level) 2 – SIX
+Fault Mode: 1 – ONE (HPC Degradation) or 2 – TWO (HPC Degradation, Fan Degradation)
+2. Create RUL target label in train dataset, which is calculated as finding the max cycle for that engine, assigning that as output value for first RUL corresponding to first cycle and decrementing that by one within that engine
+3. Create RUL target label in test dataset, which is calculated as finding the max cycle for that engine, from the RUL_FD00~.txt file, assigning that as output value for first RUL corresponding to first cycle and decrementing that by one within that engine
+4. Remove unnecessary columns
+5. Concatenate all train files and test files respectively
+6. Perform One-Hot Encoding,  to create columns condition-1, condition-2, faultMode-1, faultMode-2
+
+
 ## Starter Code
 We strongly recommend thinking about this as a regression problem. Here's an example notebook to get you started with regression using XGBoost.
 - https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb 
@@ -101,6 +146,10 @@ Are all features important? Can some features be combined or aggregated?
 Are your classes (if you have any) evenly distributed? If not, how do you help balance this class distribution?
   
 How do you evaluate the accuracy of your model? What cells in the confusion matrix (if you have one) have higher impact for a fictitious turbofan engine manufacturer that uses your model? 
+
+# Assumptions 
+We used a naive assumption, that the degradation starts at the very first cycle of operation. Deeper understanding and research will help to find the optimal threshold value for when actual degradation could have started to get a more accurate Remaining Useful Life (RUL).
+
 
 
 References
