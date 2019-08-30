@@ -7,7 +7,7 @@ NASA Turbofan Engine Fault Dataset @ AWS# Predictive Maintenance using Machine L
 # Vivek Dosapati
 # Ravi Gummadi
 # Madelaine Davis 
-# John cavers 
+# John Cavers 
 
 
 S3 : data location :
