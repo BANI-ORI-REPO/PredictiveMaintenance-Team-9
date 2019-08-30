@@ -17,6 +17,20 @@ https://bhavanashah-aws-ml.notebook.us-east-1.sagemaker.aws/tree/PredictiveMaint
 
 More about the xGboosst model used :
 https://aws.amazon.com/blogs/machine-learning/simplify-machine-learning-with-xgboost-and-amazon-sagemaker/ 
+
+Once main train dataset was created, we split it further into train/validation by 80/20.
+We used XGBoost regression algorithm, that is a supervised learning algorithm that attempts to accurately predict a target variable by combining an ensemble of estimates from a set of simpler, weaker models
+First we trained model with static hyperparameters
+Then reconfigured for Hyperparameter tuning
+
+
+Results for Static Model: train-validation-rmse: 45.7
+Parameters:
+"max_depth":"5","eta":"0.2","gamma":"4","min_child_weight":"6","subsample":"0.7","silent":"0","objective":"reg:linear","num_round":"50”
+Results for Best Model, out of 20 models built: validation-rmse: 33.062
+Parameters:
+eta': ContinuousParameter(0.3, 0.7),'min_child_weight': ContinuousParameter(5, 10),'alpha': ContinuousParameter(0, 2),'max_depth': IntegerParameter(4, 8)
+
  
 
 
